@@ -9,33 +9,6 @@ int Karatsuba(int, int, int);
 int* MergeSort(int*, int);
 int* Merge(int*, int*, int);
 
-int main() {
-    auto start = high_resolution_clock::now();
-    std::cout << RecIntMult(5678, 1234, 4) << std::endl;
-    auto stop1 = high_resolution_clock::now();
-
-    std::cout << Karatsuba(5678, 1234, 4) << std::endl;
-    auto stop2 = high_resolution_clock::now();
-
-    int *A = new int[]{5, 4, 1, 8, 7, 2, 6, 3};
-    int *sortedA = MergeSort(A, 8);
-    auto stop3 = high_resolution_clock::now();
-
-    std::cout << "Sorted array: ";
-    for (int i = 0; i < 8; i++) {
-        std::cout << sortedA[i] << " ";
-    }
-    std::cout << std::endl;
-
-    auto duration1 = duration_cast<microseconds>(stop1 - start);
-    auto duration2 = duration_cast<microseconds>(stop2 - stop1);
-    auto duration3 = duration_cast<microseconds>(stop3 - stop2);
-
-    std::cout << "\nTime taken by function:\nRecIntMult: "
-         << duration1.count() << " microseconds\nKaratsuba: " << duration2.count() << " microseconds" << std::endl
-         << "MergeSort: " << duration3.count() << " microseconds" << std::endl;
-    return 0;
-}
 
 // Algorithms Illuminated: Part 1 (p. 9)
 //
@@ -146,4 +119,32 @@ int* Merge(int *C, int *D, int n) {
     }
 
     return B;
+}
+
+int main() {
+    auto start = high_resolution_clock::now();
+    std::cout << RecIntMult(5678, 1234, 4) << std::endl;
+    auto stop1 = high_resolution_clock::now();
+
+    std::cout << Karatsuba(5678, 1234, 4) << std::endl;
+    auto stop2 = high_resolution_clock::now();
+
+    int *A = new int[]{5, 4, 1, 8, 7, 2, 6, 3};
+    int *sortedA = MergeSort(A, 8);
+    auto stop3 = high_resolution_clock::now();
+
+    std::cout << "Sorted array: ";
+    for (int i = 0; i < 8; i++) {
+        std::cout << sortedA[i] << " ";
+    }
+    std::cout << std::endl;
+
+    auto duration1 = duration_cast<microseconds>(stop1 - start);
+    auto duration2 = duration_cast<microseconds>(stop2 - stop1);
+    auto duration3 = duration_cast<microseconds>(stop3 - stop2);
+
+    std::cout << "\nTime taken by function:\nRecIntMult: "
+              << duration1.count() << " microseconds\nKaratsuba: " << duration2.count() << " microseconds" << std::endl
+              << "MergeSort: " << duration3.count() << " microseconds" << std::endl;
+    return 0;
 }
